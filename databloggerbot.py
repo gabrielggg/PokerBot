@@ -21,7 +21,7 @@ class DataBloggerBot(BasePokerPlayer):
         #         print(round_state['round_count'])
         #         print('*****************yo soy small blind')
 
-        print(round_state)
+        #print(round_state)
         #print(((round_state['small_blind_amount'])*2))
             
         call_amount = [item for item in valid_actions if item['action'] == 'call'][0]['amount']

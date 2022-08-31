@@ -13,13 +13,15 @@ if __name__ == '__main__':
     stack_log = []
     stack_values = []
     stack_values_2 = []
-    for round in range(50):
+    for round in range(5):
         p1, p2= blogger_bot, CallBot()
 
-        config = setup_config(max_round=7, initial_stack=500, small_blind_amount=5)
+        config = setup_config(max_round=10, initial_stack=500, small_blind_amount=5)
         config.register_player(name="p1", algorithm=p1)
         config.register_player(name="p2", algorithm=p2)
-        game_result = start_poker(config, verbose=1)
+        game_result, round_count, stack = start_poker(config, verbose=1)
+        print(round_count,"testtest")
+        print(stack, "testest222")
 
         stack_log.append([player['stack'] for player in game_result['players'] if player['uuid'] == blogger_bot.uuid])
         stack_values.append((int(np.mean(stack_log))))
