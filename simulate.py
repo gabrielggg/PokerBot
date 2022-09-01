@@ -13,6 +13,7 @@ if __name__ == '__main__':
     stack_log = []
     stack_values = []
     stack_values_2 = []
+    stack_parsed = []
     for round in range(5):
         p1, p2= blogger_bot, CallBot()
 
@@ -28,11 +29,20 @@ if __name__ == '__main__':
         print('Avg. stack:', '%d' % (int(np.mean(stack_log))))
         print(stack_values)
         print(stack_log)
+        actual_stack = 500
+        for index,stack_1 in enumerate(stack):
+            stack_parsed.append(stack_1["p1"] - actual_stack)
+            actual_stack = stack_1["p1"]
+            
         #print(list(itertools.chain(*stack_log)))
-        
-    sum_list = itertools.accumulate(list(itertools.chain(*stack_log)))
+    print(stack_parsed)    
+    sum_list = itertools.accumulate(stack_parsed)
+    print(sum_list)
     for index,num in enumerate(sum_list):
-        print(num-(500*(index+1)))
-        stack_values_2.append(num-(500*(index+1)))
+        stack_values_2.append(num)
+    print(stack_values_2)
+    bb100 = (stack_values_2[-1]/10) / (len(stack_values_2)/100)
+    print(stack_values_2[-1], len(stack_values_2))
+    print(bb100, " <---bb/100")
     plt.plot(stack_values_2)
     plt.show()
